@@ -3,9 +3,10 @@
 %bcond_without	tests		# build without tests
 
 %define	rel	1
-%define	rdate   20070619
-%define	svnrev 12
+%define	rdate	20070619
+%define	svnrev	12
 Summary:	Portable real-time compression library
+Summary(pl.UTF-8):	Przenośna biblioteka kompresji w czasie rzeczywistej
 Name:		fastlz
 Version:	0.1.0
 Release:	0.r%{svnrev}.%{rdate}.%{rel}
@@ -26,14 +27,23 @@ compression and decompression. It favors speed over compression ratio.
 Decompression requires no memory. Decompression algorithm is very
 simple, and thus extremely fast.
 
+%description -l pl.UTF-8
+FastLZ to biblioteka do bezstratnej kompresji danych zaprojektowana do
+kompresji i dekompresji w czasie rzeczywistym. Preferuje szybkość niż
+współczynnik kompresji. Dekompresja nie wymaga pamięci. Algorytm
+dekompresji jest bardzo prosty, dzięki czemu jest bardzo szybki.
+
 %package devel
-Summary:	Header files and development libraries for %{name}
+Summary:	Header file for FastLZ library
+Summary(pl.UTF-8):	Plik nagłówkowy biblioteki FastLZ
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-This package contains the header files and development libraries for
-%{name}.
+This package contains the header file for FastLZ library.
+
+%description devel -l pl.UTF-8
+Ten pakiet zawiera plik nagłówkowy biblioteki FastLZ.
 
 %prep
 %setup -q -n %{name}-%{svnrev}
@@ -87,10 +97,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE
+%doc LICENSE README.TXT
 %attr(755,root,root) %{_libdir}/libfastlz.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libfastlz.so
+%attr(755,root,root) %{_libdir}/libfastlz.so
 %{_includedir}/fastlz.h

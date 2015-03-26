@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_without	tests		# build without tests
 
-%define	rel	1
+%define	rel	2
 %define	rdate	20070619
 %define	svnrev	12
 Summary:	Portable real-time compression library
